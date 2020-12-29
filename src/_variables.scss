@@ -1,0 +1,46 @@
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+@font-face {
+  font-family: 'ApercuRegular';
+  src: url('./assets/apercu_regular_pro.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'ApercuRegularItalic';
+  src: url('./assets/apercu_regular_italic_pro.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'ApercuMedium';
+  src: url('./assets/apercu_medium_pro.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'ApercuMediumItalic';
+  src: url('./assets/apercu_medium_italic_pro.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'ApercuBold';
+  src: url('./assets/apercu_bold_pro.otf') format('otf');
+}
+
+@font-face {
+  font-family: 'ApercuBoldItalic';
+  src: url('./assets/apercu_bold_italic_pro.otf') format('otf');
+}
+
+// font families
+$AP-regular: ApercuRegular;
+$AP-regular-italic: ApercuRegularItalic;
+$AP-medium: ApercuMedium;
+$AP-medium-italic: ApercuMediumItalic;
+$AP-bold: ApercuBold;
+$AP-bold-italic: ApercuBoldItalic;
+
+
+$home: #ea3d30;
+$graphic-designer: #fa8aa9;
+$social-media: #f6d40e;
+$creative-producer: #0253dd;
+$photo-editor: #14af75;
