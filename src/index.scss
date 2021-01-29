@@ -13,3 +13,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.btn-primary {
+  color: #000;
+  background-color: $light-grey;
+  border-color: $dark-grey;
+  &:hover,
+  &:active {
+    background-color: $dark-grey;
+    border-color: $dark-grey;
+  }
+}

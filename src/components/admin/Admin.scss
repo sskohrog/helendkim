@@ -1,0 +1,129 @@
+@import '../../_variables.scss';
+
+.admin-home-container {
+  .landing-menu,
+  .home-menu,
+  .work-menu {
+    .btn-link {
+      color: #000;
+      &:hover {
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.admin-btn-container {
+  .col-6:last-child {
+    text-align: right;
+  }
+}
+
+.admin-about-container {
+  display: flex;
+  height: 100vh;
+  flex-flow: column;
+  .grey-box {
+    overflow: auto;
+  }
+  .add-experience {
+    cursor: pointer;
+    &:hover {
+      color: #000 !important;
+      text-decoration: underline;
+    }
+  }
+  .experience-container {
+    .admin-about-input {
+      border-right: none;
+    }
+    .input-group-append {
+      background-color: #fff;
+      border: 1px solid #ced4da;
+      .close {
+        background-color: #fff !important;
+        &:hover,
+        &:active {
+          color: #000;
+        }
+      }
+    }
+  }
+  .white-box.admin-sm-container {
+    .form-group,
+    label {
+      margin-bottom: 0;
+      svg.sm-svg {
+        width: 60px;
+    }
+    }
+  }
+  .form-group {
+    display: flex;
+    align-items: baseline;
+    svg.sm-svg {
+      &:hover {
+        width: 75px;
+      }
+    }
+  }
+}
+
+.admin-work-container {
+  .admin-work-items {
+    .admin-work {
+      height: 500px;
+      background-position: center;
+      background-size: cover;
+      .admin-title {
+        margin-bottom: 0;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        .white-background {
+          background-color: rgba(255, 255, 255, 0.6);
+          padding: 2%;
+        }
+      }
+      &:hover {
+        cursor: pointer;
+        -webkit-box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
+        box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+}
+
+.admin-wizard-container {
+  .progress-bar {
+    background-color: $light-grey;
+    color: #000;
+  }
+  .wizard-input {
+    max-width: 500px;
+  }
+  .wizard-textarea {
+    height: 150px;
+  }
+  .admin-wizard-1-container,
+  .admin-wizard-2-container,
+  .admin-wizard-3-container {
+    .row:last-child {
+      max-width: 1500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .admin-wizard-3-container {
+    .carousel-editor-container {
+      .imgs-container {
+        .work-img {
+          width: 500px;
+          height: 500px;
+        }
+      }
+    }
+  }
+}

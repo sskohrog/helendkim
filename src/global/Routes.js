@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from 'react'
 import { Router } from '@reach/router'
-import AdminHome from '../components/admin/AdminHome'
+import React from 'react'
+import AdminContainer from '../components/admin/AdminContainer'
 import HomeContainer from '../components/home/HomeContainer'
 
 function Routes({ count, location, passwordCorrect }) {
   return (
-    <Router className='row full-height'>
-      <HomeContainer path="/" />
-      <AdminHome path="/admin/home" />
+    <Router className='row'>
+      <HomeContainer path='/' />
+      <AdminContainer path='/admin/*' />
     </Router>
   )
 }

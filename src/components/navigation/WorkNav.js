@@ -1,4 +1,5 @@
 import React from 'react'
+import './SideMenu.scss'
 
 function WorkNav() {
   return (

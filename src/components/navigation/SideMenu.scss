@@ -1,3 +1,5 @@
+@import '../../_variables.scss';
+
 .side-menu-button {
   height: 100vh;
   display: flex;
@@ -5,6 +7,7 @@
   justify-content: center;
   width: 62px;
   z-index: 100;
+  cursor: pointer;
   h6 {
     transform: rotate(90deg);
     font-size: 1.6rem;
@@ -17,14 +20,14 @@
   z-index: 99;
   position: fixed;
   top: 0;
-  background-color: #dbdbe0;
+  background-color: $light-grey;
   height: 100vh;
   width: 430px;
   transition: all 500ms ease-in-out;
   &.right {
     right: 0;
     transform: translateX(368px);
-    border-left: 2px solid #000;
+    border-left: 1px solid #000;
     &.show {
       transform: translateX(0);
       border: none;
@@ -33,7 +36,7 @@
   &.left {
     left: -368px;
     transform: translateX(0);
-    border-right: 2px solid #000;
+    border-right: 1px solid #000;
     &.show {
       left: 0;
       border: none;
@@ -70,6 +73,12 @@
         width: 100%;
       }
     }
+    svg.sm-svg {
+      width: 75px;
+      &:hover {
+        width: 76px;
+      }
+    }
     .sm-title {
       border-top: solid 1px #e5e4e6;
       &:last-child {
@@ -80,12 +89,6 @@
         a {
           text-decoration: none;
           color: inherit;
-          svg {
-            width: 75px;
-            &:hover {
-              width: 80px;
-            }
-          }
         }
       }
     }
