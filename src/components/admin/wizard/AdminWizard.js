@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { GlobalContext } from '../../services/GlobalContext'
+import { GlobalContext } from '../../../services/GlobalContext'
 import AdminWizardOne from './AdminWizardOne'
 // import AdminWizardTwo from './AdminWizardTwo'
 import AdminWizardThree from './AdminWizardThree'
-import './Admin.scss'
+import '../Admin.scss'
 
 function AdminWizard({ id }) {
   const { getWorkItem, saveWorkItem, uploadImages, firebase } = useContext(

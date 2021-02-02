@@ -2,7 +2,6 @@ import React from 'react'
 import { Location } from '@reach/router'
 import { GlobalContext, GlobalProvider } from '../services/GlobalContext'
 import AdminAbout from '../components/admin/AdminAbout'
-import AdminWorkNav from '../components/admin/AdminWorkNav'
 import About from '../components/navigation/About'
 import SideMenu from '../components/navigation/SideMenu'
 import WorkNav from '../components/navigation/WorkNav'
@@ -19,8 +18,12 @@ function App() {
               <GlobalContext.Consumer>
                 {({ isAdminMode }) => (
                   <>
-                    <SideMenu menuText='Work' direction='left'>
-                      {isAdminMode ? <AdminWorkNav /> : <WorkNav />}
+                    <SideMenu
+                      menuText='Work'
+                      direction='left'
+                      disableMenu={isAdminMode}
+                    >
+                      {<WorkNav />}
                     </SideMenu>
                     <div className='col main-content'>
                       <Routes />

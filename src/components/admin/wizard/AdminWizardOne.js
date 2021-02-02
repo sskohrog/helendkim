@@ -5,7 +5,7 @@ import Form from 'reactstrap/lib/Form'
 import FormGroup from 'reactstrap/lib/FormGroup'
 import Input from 'reactstrap/lib/Input'
 import Label from 'reactstrap/lib/Label'
-import './Admin.scss'
+import '../Admin.scss'
 
 function AdminWizardOne({ workItem, setWorkItem, setWizardProgress }) {
   const [inputData, setInputData] = useState(null)
@@ -59,7 +59,7 @@ function AdminWizardOne({ workItem, setWorkItem, setWizardProgress }) {
         </div>
         <div className='col-6'>
           <FormGroup className='col-12-description-textarea-container'>
-            <Label for='description'>Job Title</Label>
+            <Label for='description'>Job Description</Label>
             <Input
               type='textarea'
               id='description'

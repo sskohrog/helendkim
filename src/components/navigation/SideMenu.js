@@ -1,14 +1,25 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './SideMenu.scss'
 
-function SideMenu({ menuText, direction = 'right', children }) {
+function SideMenu({
+  menuText,
+  direction = 'right',
+  children,
+  disableMenu = false
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  useContext(() => {
+    disableMenu && setIsMenuOpen(false)
+  }, [disableMenu])
 
   return (
     <React.Fragment>
       <div
         className={`side-menu-button ${direction}`}
-        onClick={() => setIsMenuOpen(true)}
+        onClick={() => {
+          !disableMenu && setIsMenuOpen(true)
+        }}
       >
         <h6>{menuText}</h6>
       </div>
@@ -16,7 +27,9 @@ function SideMenu({ menuText, direction = 'right', children }) {
         className={`side-menu-container ${direction}${
           isMenuOpen ? ' show' : ''
         }`}
-        onClick={() => setIsMenuOpen(true)}
+        onClick={() => {
+          !disableMenu && setIsMenuOpen(true)
+        }}
       >
         <div className='side-menu-child'>{children}</div>
       </div>
@@ -24,7 +37,9 @@ function SideMenu({ menuText, direction = 'right', children }) {
         className={`side-menu-backdrop modal-backdrop${
           isMenuOpen ? ' show' : ''
         }`}
-        onClick={() => setIsMenuOpen(false)}
+        onClick={() => {
+          !disableMenu && setIsMenuOpen(false)
+        }}
       />
     </React.Fragment>
   )

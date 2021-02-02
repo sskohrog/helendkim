@@ -1,10 +1,20 @@
 import { navigate } from '@reach/router'
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
+import Button from 'reactstrap/lib/Button'
+import Modal from 'reactstrap/lib/Modal'
+import ModalHeader from 'reactstrap/lib/ModalHeader'
+import ModalFooter from 'reactstrap/lib/ModalFooter'
 import { GlobalContext } from '../../services/GlobalContext'
 import './Admin.scss'
 
 function AdminWork() {
-  const { workItems } = useContext(GlobalContext)
+  const { workItems, deleteWorkItem } = useContext(GlobalContext)
+  const [modal, setModal] = useState(false)
+
+  const deleteWorkModal = () => {
+    modal && deleteWorkItem(modal)
+    setModal(false)
+  }
 
   return (
     <div className='col-12 admin-work-container'>
@@ -37,6 +47,16 @@ function AdminWork() {
                   })`
                 }}
               >
+                <Button
+                  color='primary'
+                  className='delete-work-btn'
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    setModal(key)
+                  }}
+                >
+                  <i className='fas fa-trash' />
+                </Button>
                 <p className='admin-title row'>
                   <span className='white-background'>
                     Edit {workItems[key].name}
@@ -47,6 +67,17 @@ function AdminWork() {
           </div>
         ))}
       </div>
+      <Modal isOpen={modal} className='admin-delete-modal-container'>
+        <ModalHeader>Delete Work ?</ModalHeader>
+        <ModalFooter>
+          <Button color='primary' onClick={deleteWorkModal}>
+            Delete
+          </Button>
+          <Button color='secondary' onClick={() => setModal((m) => false)}>
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
     </div>
   )
 }

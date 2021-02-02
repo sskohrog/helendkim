@@ -1,8 +1,8 @@
 import React from 'react'
 import Button from 'reactstrap/lib/Button'
 import Form from 'reactstrap/lib/Form'
-import ImageEditor from './mediaEditors/ImageEditor'
-import './Admin.scss'
+import ImageEditor from '../mediaEditors/ImageEditor'
+import '../Admin.scss'
 
 function AdminWizardThree({
   media,

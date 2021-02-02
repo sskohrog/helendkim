@@ -1,7 +1,7 @@
 import { Link, Router } from '@reach/router'
 import React from 'react'
 import AdminLanding from './AdminLanding'
-import AdminWizard from './AdminWizard'
+import AdminWizard from './wizard/AdminWizard'
 import AdminWork from './AdminWork'
 import './Admin.scss'
 

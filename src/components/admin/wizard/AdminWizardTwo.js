@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Button from 'reactstrap/lib/Button'
 import Form from 'reactstrap/lib/Form'
-import MEDIA_TYPES from '../../global/MEDIA_TYPES'
-import './Admin.scss'
+import MEDIA_TYPES from '../../../global/MEDIA_TYPES'
+import '../Admin.scss'
 
 function AdminWizardTwo({ type, setWorkItem, setWizardProgress }) {
   const [mediaType, setMediaType] = useState(null)

@@ -7,6 +7,7 @@ import { v4 as uuid } from 'uuid'
 import {
   PROJECT_COLLECTION,
   ABOUT_COLLECTION,
+  LANDING_COLLECTION,
   ABOUT_DOC
 } from '../global/DATABASE'
 import 'firebase/firestore'
@@ -87,6 +88,23 @@ function GlobalProvider({ location, children }) {
     return project
   }
 
+  const getLandingData = async () => {
+    let landingData = {}
+    firebase &&
+      (await firebase
+        .firestore()
+        .collection(ABOUT_COLLECTION)
+        .doc(LANDING_COLLECTION)
+        .get()
+        .then((snapshot) => {
+          landingData = snapshot.data()
+        })
+        .catch((error) => {
+          // Handle the error
+        }))
+    return landingData
+  }
+
   const saveWorkItem = async (work, id) => {
     let clonedWork = _cloneDeep(work)
     let docID = id === 'new' ? uuid() : id
@@ -139,6 +157,21 @@ function GlobalProvider({ location, children }) {
     }
   }
 
+  const deleteWorkItem = async (docID) => {
+    let clonedWorks = _cloneDeep(workItems)
+    try {
+      await firebase
+        .firestore()
+        .collection(PROJECT_COLLECTION)
+        .doc(docID)
+        .delete()
+    } catch (err) {
+      console.log(err)
+    }
+    delete clonedWorks[docID]
+    setWorkItems(clonedWorks)
+  }
+
   const getAboutData = async () => {
     let aboutData = {}
     firebase &&
@@ -178,7 +211,9 @@ function GlobalProvider({ location, children }) {
         uploadImages,
         saveAboutData,
         getWorkItem,
+        getLandingData,
         saveWorkItem,
+        deleteWorkItem,
         workItems,
         setWorkItems,
         isAdminMode,

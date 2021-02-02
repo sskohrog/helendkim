@@ -43,6 +43,8 @@
       border: 1px solid #ced4da;
       .close {
         background-color: #fff !important;
+        padding-right: 4px;
+
         &:hover,
         &:active {
           color: #000;
@@ -56,7 +58,7 @@
       margin-bottom: 0;
       svg.sm-svg {
         width: 60px;
-    }
+      }
     }
   }
   .form-group {
@@ -72,10 +74,24 @@
 
 .admin-work-container {
   .admin-work-items {
+    .delete-work-btn {
+      z-index: 99;
+      background-color: rgba(255, 255, 255, 0.5);
+      right: 10px;
+      top: 10px;
+      position: absolute;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+      .fa-trash {
+        color: #000 !important;
+      }
+    }
     .admin-work {
       height: 500px;
       background-position: center;
       background-size: cover;
+      z-index: 90;
       .admin-title {
         margin-bottom: 0;
         justify-content: center;
@@ -93,6 +109,13 @@
         box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
       }
     }
+  }
+}
+
+.admin-delete-modal-container {
+  .modal-header,
+  .modal-footer {
+    border: none;
   }
 }
 
@@ -114,6 +137,13 @@
       max-width: 1500px;
       margin-left: auto;
       margin-right: auto;
+    }
+  }
+  .admin-wizard-1-container {
+    .coming-soon-container {
+      .wizard-input {
+        width: 100px;
+      }
     }
   }
   .admin-wizard-3-container {

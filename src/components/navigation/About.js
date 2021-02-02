@@ -26,7 +26,7 @@ function About() {
             <div className='col-12 about-title'>
               {(aboutData || {}).description}
             </div>
-            <div className='col-12 about-title school-title mt-2'>
+            <div className='col-12 about-title school-title mt-3'>
               {(aboutData || {}).major}
               <br />
               {(aboutData || {}).school}

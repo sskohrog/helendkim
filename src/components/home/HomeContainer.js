@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import LogoHover from './LogoHover'
 import './Home.scss'
 import { HOME_DATA } from '../../assets/MOCK_DATA'
 
 function HomeContainer() {
-  const [projTitle, setTitle] = useState('')
-  const changeText = () => {}
   return (
     <div className='col-12 home-container'>
       <LogoHover />
