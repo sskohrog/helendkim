@@ -105,7 +105,7 @@ function AdminAbout() {
                 <InputGroup>
                   <Input
                     key={idx1}
-                    id='experience'
+                    id={`experience-${idx1}`}
                     placeholder='Experience'
                     className='admin-about-input'
                     value={w || ''}

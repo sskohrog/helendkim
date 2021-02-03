@@ -72,6 +72,42 @@
   }
 }
 
+.admin-landing-container {
+  .admin-landing-main {
+    .admin-landing-card {
+      padding: 0;
+      margin-right: 5px;
+      margin-left: 5px;
+      max-width: calc(33.33333% - 15px);
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .card-body {
+        #comingsoon {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.admin-delete-modal-container {
+  .card {
+    cursor: pointer;
+    &.selected {
+      border: 1px solid rgb(0, 211, 248);
+    }
+    &:hover {
+      border: 1px solid #000;
+    }
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
 .admin-work-container {
   .admin-work-items {
     .delete-work-btn {

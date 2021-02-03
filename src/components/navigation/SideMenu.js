@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './SideMenu.scss'
 
 function SideMenu({
@@ -9,7 +9,7 @@ function SideMenu({
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
-  useContext(() => {
+  useEffect(() => {
     disableMenu && setIsMenuOpen(false)
   }, [disableMenu])
 

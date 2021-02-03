@@ -4,7 +4,7 @@ const HOME_DATA = [
     projectName: 'Luna Blanket',
     path: `/projects/0`,
     img: './images/MOCK_IMG1.png',
-    comingSoon: true,
+    comingsoon: true,
     col: 6
   },
   {
@@ -12,7 +12,7 @@ const HOME_DATA = [
     projectName: 'MOSCOT NYC',
     path: '/projects/1',
     img: './images/MOCK_IMG2.png',
-    comingSoon: false,
+    comingsoon: false,
     col: 6
   },
   {
@@ -20,7 +20,7 @@ const HOME_DATA = [
     projectName: 'Luna Blanket',
     path: '/projects/2',
     img: './images/MOCK_IMG1.png',
-    comingSoon: false,
+    comingsoon: false,
     col: 6
   },
   {
@@ -28,7 +28,7 @@ const HOME_DATA = [
     projectName: 'Luna Blanket',
     path: '/projects/3',
     img: './images/MOCK_IMG2.png',
-    comingSoon: false,
+    comingsoon: false,
     col: 6
   },
 
@@ -37,7 +37,7 @@ const HOME_DATA = [
     projectName: 'Neudesic',
     path: '/projects/4',
     img: './images/MOCK_IMG3.jpg',
-    comingSoon: false,
+    comingsoon: false,
     col: 12
   }
 ]

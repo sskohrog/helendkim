@@ -73,7 +73,7 @@ function AdminWork() {
           <Button color='primary' onClick={deleteWorkModal}>
             Delete
           </Button>
-          <Button color='secondary' onClick={() => setModal((m) => false)}>
+          <Button color='secondary' onClick={() => setModal(false)}>
             Cancel
           </Button>
         </ModalFooter>

@@ -88,21 +88,60 @@ function GlobalProvider({ location, children }) {
     return project
   }
 
-  const getLandingData = async () => {
+  const getLandingData = async (items) => {
     let landingData = {}
+    let notLandingData = {}
     firebase &&
       (await firebase
         .firestore()
-        .collection(ABOUT_COLLECTION)
-        .doc(LANDING_COLLECTION)
+        .collection(LANDING_COLLECTION)
         .get()
-        .then((snapshot) => {
-          landingData = snapshot.data()
+        .then((snapshots) => {
+          ;((snapshots || {}).docs || []).forEach((projId) => {
+            landingData[projId.id] = projId.data()
+          })
+          Object.keys(items).forEach(
+            (key) =>
+              !landingData[key] &&
+              (notLandingData[key] = {
+                comingsoon: items[key].comingsoon || false,
+                name: items[key].name || '',
+                colsize: items[key].colsize || '',
+                img: ((items[key].media || [])[0] || {}).src || ''
+              })
+          )
         })
         .catch((error) => {
           // Handle the error
         }))
-    return landingData
+
+    return { landingData, notLandingData }
+  }
+
+  const saveLandingData = async (data) => {
+    try {
+      Object.keys(data).forEach(async (key) => {
+        await firebase
+          .firestore()
+          .collection(LANDING_COLLECTION)
+          .doc(key)
+          .set(data[key])
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const deleteLandingData = async (key) => {
+    try {
+      await firebase
+        .firestore()
+        .collection(LANDING_COLLECTION)
+        .doc(key)
+        .delete()
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   const saveWorkItem = async (work, id) => {
@@ -212,6 +251,8 @@ function GlobalProvider({ location, children }) {
         saveAboutData,
         getWorkItem,
         getLandingData,
+        saveLandingData,
+        deleteLandingData,
         saveWorkItem,
         deleteWorkItem,
         workItems,
