@@ -17,8 +17,8 @@ function AdminLanding() {
     saveLandingData,
     deleteLandingData
   } = useContext(GlobalContext)
-  const [landingItems, setLandingItems] = useState([])
-  const [newItems, setNewItems] = useState([])
+  const [landingItems, setLandingItems] = useState({})
+  const [newItems, setNewItems] = useState({})
   const [modal, setModal] = useState(false)
 
   useEffect(() => {

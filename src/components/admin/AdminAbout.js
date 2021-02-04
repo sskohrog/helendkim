@@ -7,6 +7,9 @@ import Input from 'reactstrap/lib/Input'
 import InputGroup from 'reactstrap/lib/InputGroup'
 import InputGroupAddon from 'reactstrap/lib/InputGroupAddon'
 import Label from 'reactstrap/lib/Label'
+import Toast from 'reactstrap/lib/Toast'
+import ToastBody from 'reactstrap/lib/ToastBody'
+import ToastHeader from 'reactstrap/lib/ToastHeader'
 import { GlobalContext } from '../../services/GlobalContext'
 import { ReactComponent as EmailSVG } from '../../assets/email.svg'
 import { ReactComponent as LinkedinSVG } from '../../assets/linkedin.svg'
@@ -24,6 +27,7 @@ const EMPTY_ABOUT = {
 function AdminAbout() {
   const { aboutData, saveAboutData } = useContext(GlobalContext)
   const [about, setAbout] = useState(null)
+  const [showToast, setToast] = useState(false)
 
   useEffect(() => {
     setAbout(aboutData || EMPTY_ABOUT)
@@ -40,10 +44,18 @@ function AdminAbout() {
 
   return (
     <Form className='admin-about-container'>
+      <div className='row justify-content-center pt-3'>
+        <div className='col-8 pl-3'>
+          <Toast color="primary" isOpen={showToast}>
+            <ToastHeader toggle={() => setToast(false)}>Saved!</ToastHeader>
+            <ToastBody>About Me was saved</ToastBody>
+          </Toast>
+        </div>
+      </div>
       <div className='row grey-box admin-work-container'>
         <div className='col-12'>
           <div className='row'>
-            <div className='col-12 nav-title mt-5 mb-3'>Edit About</div>
+            <div className='col-12 nav-title mt-3 mb-1'>Edit About</div>
             <FormGroup className='col-12 description-textarea-container mb-2'>
               <Input
                 type='textarea'
@@ -119,7 +131,16 @@ function AdminAbout() {
                     }
                   />
                   <InputGroupAddon addonType='append'>
-                    <Button className='close' aria-label='Close'>
+                    <Button
+                      className='close'
+                      aria-label='Close'
+                      onClick={() =>
+                        setAbout((data) => ({
+                          ...data,
+                          work: data.work.filter((d, idx2) => idx1 !== idx2)
+                        }))
+                      }
+                    >
                       <span aria-hidden='true'>&times;</span>
                     </Button>
                   </InputGroupAddon>
@@ -172,7 +193,7 @@ function AdminAbout() {
           <div className='row'>
             <div className='col-6'>
               <Button
-                onClick={() => setAbout(EMPTY_ABOUT)}
+                onClick={() => setAbout(aboutData)}
                 color='primary'
                 className='cancel-btn'
               >
@@ -180,7 +201,13 @@ function AdminAbout() {
               </Button>
             </div>
             <div className='col-6'>
-              <Button onClick={() => saveAboutData(about)} className='save-btn'>
+              <Button
+                onClick={() => {
+                  saveAboutData(about)
+                  setToast(true)
+                }}
+                className='save-btn'
+              >
                 Save
               </Button>
             </div>

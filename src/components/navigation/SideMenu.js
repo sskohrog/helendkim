@@ -1,45 +1,30 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import './SideMenu.scss'
 
 function SideMenu({
   menuText,
   direction = 'right',
   children,
-  disableMenu = false
+  isOpen,
+  setIsOpen
 }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  useEffect(() => {
-    disableMenu && setIsMenuOpen(false)
-  }, [disableMenu])
-
   return (
     <React.Fragment>
       <div
         className={`side-menu-button ${direction}`}
-        onClick={() => {
-          !disableMenu && setIsMenuOpen(true)
-        }}
+        onClick={() => setIsOpen(true)}
       >
         <h6>{menuText}</h6>
       </div>
       <div
-        className={`side-menu-container ${direction}${
-          isMenuOpen ? ' show' : ''
-        }`}
-        onClick={() => {
-          !disableMenu && setIsMenuOpen(true)
-        }}
+        className={`side-menu-container ${direction}${isOpen ? ' show' : ''}`}
+        onClick={() => setIsOpen(true)}
       >
         <div className='side-menu-child'>{children}</div>
       </div>
       <div
-        className={`side-menu-backdrop modal-backdrop${
-          isMenuOpen ? ' show' : ''
-        }`}
-        onClick={() => {
-          !disableMenu && setIsMenuOpen(false)
-        }}
+        className={`side-menu-backdrop modal-backdrop${isOpen ? ' show' : ''}`}
+        onClick={() => setIsOpen(false)}
       />
     </React.Fragment>
   )

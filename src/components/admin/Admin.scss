@@ -20,53 +20,65 @@
   }
 }
 
-.admin-about-container {
-  display: flex;
-  height: 100vh;
-  flex-flow: column;
-  .grey-box {
-    overflow: auto;
-  }
-  .add-experience {
-    cursor: pointer;
-    &:hover {
-      color: #000 !important;
-      text-decoration: underline;
-    }
-  }
-  .experience-container {
-    .admin-about-input {
-      border-right: none;
-    }
-    .input-group-append {
-      background-color: #fff;
-      border: 1px solid #ced4da;
-      .close {
-        background-color: #fff !important;
-        padding-right: 4px;
-
-        &:hover,
-        &:active {
-          color: #000;
+.side-menu-container {
+  .admin-about-container {
+    display: flex;
+    height: 100vh;
+    flex-flow: column;
+    .grey-box {
+      overflow: auto;
+      > .col-12 {
+        padding-left: 15px;
+      }
+      .toast {
+        height: 100px;
+        .toast-header {
+          color: #fff;
+          background-color: #07b82d;
         }
       }
     }
-  }
-  .white-box.admin-sm-container {
-    .form-group,
-    label {
-      margin-bottom: 0;
-      svg.sm-svg {
-        width: 60px;
+    .add-experience {
+      cursor: pointer;
+      &:hover {
+        color: #000 !important;
+        text-decoration: underline;
       }
     }
-  }
-  .form-group {
-    display: flex;
-    align-items: baseline;
-    svg.sm-svg {
-      &:hover {
-        width: 75px;
+    .experience-container {
+      .admin-about-input {
+        border-right: none;
+      }
+      .input-group-append {
+        background-color: #fff;
+        border: 1px solid #ced4da;
+        .close {
+          background-color: #fff !important;
+          padding-right: 4px;
+
+          &:hover,
+          &:active {
+            color: #000;
+          }
+        }
+      }
+    }
+    .white-box.admin-sm-container {
+      .form-group,
+      label {
+        margin-bottom: 0;
+        svg.sm-svg {
+          width: 60px;
+        }
+      }
+    }
+    .form-group {
+      display: flex;
+      align-items: baseline;
+      svg.sm-svg {
+        &:hover {
+          width: 75px;
+        }
       }
     }
   }

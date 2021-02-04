@@ -5,14 +5,16 @@ import { ReactComponent as LinkedinSVG } from '../../assets/linkedin.svg'
 import { GlobalContext } from '../../services/GlobalContext'
 import './SideMenu.scss'
 
-function About() {
+function About({ setIsOpen }) {
   const { aboutData } = useContext(GlobalContext)
   const [adminCount, setAdminCount] = useState(0)
 
-  const updateCount = () => {
+  const updateCount = (e) => {
     if (adminCount === 9) {
+      e.stopPropagation()
       setAdminCount(0)
       navigate('/admin/home')
+      setIsOpen(false)
     } else {
       setAdminCount((count) => count + 1)
     }
@@ -33,15 +35,16 @@ function About() {
             </div>
             <div
               className='col-12 nav-title mt-5  mb-2'
-              onClick={() => updateCount()}
+              onClick={(e) => updateCount(e)}
             >
               Experience
             </div>
             {/* at 11 experiences, switch to col-6 */}
             {((aboutData || {}).work || []).map(
-              (w) =>
+              (w, idx) =>
                 w && (
                   <div
+                    key={idx}
                     className={`${
                       ((aboutData || {}).work || []).length < 10
                         ? 'col-12'

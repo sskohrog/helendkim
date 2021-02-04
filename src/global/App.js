@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Location } from '@reach/router'
 import { GlobalContext, GlobalProvider } from '../services/GlobalContext'
 import AdminAbout from '../components/admin/AdminAbout'
@@ -9,6 +9,9 @@ import Routes from './Routes'
 import './Global.scss'
 
 function App() {
+  const [isOpenWork, setIsOpenWork] = useState(false)
+  const [isOpenAbout, setIsOpenAbout] = useState(false)
+
   return (
     <div className='main-container container-fluid'>
       <div className='row'>
@@ -21,15 +24,24 @@ function App() {
                     <SideMenu
                       menuText='Work'
                       direction='left'
-                      disableMenu={isAdminMode}
+                      isOpen={isAdminMode ? false : isOpenWork}
+                      setIsOpen={setIsOpenWork}
                     >
-                      {<WorkNav />}
+                      <WorkNav setIsOpen={setIsOpenWork} />
                     </SideMenu>
                     <div className='col main-content'>
                       <Routes />
                     </div>
-                    <SideMenu menuText='About'>
-                      {isAdminMode ? <AdminAbout /> : <About />}
+                    <SideMenu
+                      menuText='About'
+                      isOpen={isOpenAbout}
+                      setIsOpen={setIsOpenAbout}
+                    >
+                      {isAdminMode ? (
+                        <AdminAbout />
+                      ) : (
+                        <About setIsOpen={setIsOpenAbout} />
+                      )}
                     </SideMenu>
                   </>
                 )}
