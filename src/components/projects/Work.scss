@@ -1,0 +1,65 @@
+@keyframes homeAnimation {
+  0% {
+    fill: #fed8ff;
+  }
+  25% {
+    fill: #f9d9c1;
+  }
+  50% {
+    fill: #d0e5fb;
+  }
+  75% {
+    fill: #fff7c9;
+  }
+  100% {
+    fill: #dffcd1;
+  }
+}
+.work-container {
+  svg.home-icon {
+    width: 55px;
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    left: calc(50% - 27.5px);
+    &:hover {
+      cursor: pointer;
+      path {
+        stroke: #000;
+        animation-name: homeAnimation;
+        animation-duration: 10s;
+        animation-timing-function: ease;
+        animation-delay: 0;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+    }
+  }
+  .media-container {
+    .work-carousel {
+      margin-left: -15px;
+      margin-right: -15px;
+      .carousel-img {
+        width: 100%;
+      }
+      .work-carousel-dots {
+        position: absolute;
+        display: flex;
+        flex-flow: column;
+        top: 5%;
+        left: 5%;
+        .carousel__dot {
+          background-color: transparent;
+          margin-bottom: 10px;
+          height: 15px;
+          width: 15px;
+          border: 1px solid #000;
+          border-radius: 50%;
+          &.carousel__dot--selected {
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

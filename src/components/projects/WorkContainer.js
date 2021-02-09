@@ -1,15 +1,57 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { CarouselProvider, Slider, Slide, DotGroup } from 'pure-react-carousel'
+import { ReactComponent as Home } from '../../assets/home.svg'
+import { GlobalContext } from '../../services/GlobalContext'
+import 'pure-react-carousel/dist/react-carousel.es.css'
 import './Work.scss'
+import { navigate } from '@reach/router'
 
-function WorkContainer() {
-  return (
+function WorkContainer({ id }) {
+  const { getWorkItem, firebase } = useContext(GlobalContext)
+  const [work, setWork] = useState(null)
+
+  useEffect(() => {
+    ;(async () => {
+      let proj = await getWorkItem(id)
+      setWork(proj)
+    })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [firebase, id])
+
+  return work ? (
     <div className='col-12 work-container'>
       <div className='row'>
-        <div className='col-6 media-container'>media</div>
+        <Home className='home-icon' onClick={() => navigate('/')} />
+        <div className='col-6 media-container'>
+          <CarouselProvider
+            infinite
+            className='work-carousel'
+            orientation='vertical'
+            visibleSlides={1}
+            naturalSlideWidth={(window.innerWidth - 124) / 2 || 400}
+            naturalSlideHeight={window.innerHeight || 400}
+            totalSlides={((work || {}).media || []).length || 0}
+          >
+            <Slider>
+              {((work || {}).media || []).map((m, idx) => (
+                <Slide index={idx}>
+                  <img
+                    className='carousel-img'
+                    alt={(m || {}).alt || ''}
+                    src={(m || {}).src || ''}
+                  />
+                </Slide>
+              ))}
+            </Slider>
+            {((work || {}).media || []).length > 1 && (
+              <DotGroup className='work-carousel-dots' />
+            )}
+          </CarouselProvider>
+        </div>
         <div className='col-6 work-info-container'>info</div>
       </div>
     </div>
-  )
+  ) : null
 }
 
 export default WorkContainer
