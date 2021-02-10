@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { navigate } from '@reach/router'
 import { CarouselProvider, Slider, Slide, DotGroup } from 'pure-react-carousel'
 import { ReactComponent as Home } from '../../assets/home.svg'
 import { GlobalContext } from '../../services/GlobalContext'
 import 'pure-react-carousel/dist/react-carousel.es.css'
 import './Work.scss'
-import { navigate } from '@reach/router'
 
 function WorkContainer({ id }) {
   const { getWorkItem, firebase } = useContext(GlobalContext)
@@ -48,7 +48,17 @@ function WorkContainer({ id }) {
             )}
           </CarouselProvider>
         </div>
-        <div className='col-6 work-info-container'>info</div>
+        <div className='col-6 work-info-container'>
+          <div className='row'>
+            <div className='col-12 work-info-name'>{(work || {}).name}</div>
+            <div className='col-12 mt-1 work-info-title'>
+              <h3>{(work || {}).jobTitle}</h3>
+            </div>
+            <div className='col-12 mt-3 work-info-description'>
+              {(work || {}).description}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   ) : null

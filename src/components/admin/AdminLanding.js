@@ -118,6 +118,11 @@ function AdminLanding() {
       </div>
       <div className='row admin-landing-footer mt-4'>
         <div className='col-6'>
+          <Button onClick={() => navigate('/admin')} className='cancel-btn'>
+            Cancel
+          </Button>
+        </div>
+        <div className='col-6 text-right'>
           <Button
             onClick={() => {
               saveLanding(landingItems)
@@ -127,11 +132,6 @@ function AdminLanding() {
             className='save-btn'
           >
             Save
-          </Button>
-        </div>
-        <div className='col-6 text-right'>
-          <Button onClick={() => navigate('/admin')} className='cancel-btn'>
-            Cancel
           </Button>
         </div>
       </div>

@@ -2,6 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import reportWebVitals from './reportWebVitals'
 import App from './global/App'
+import './assets/fonts/apercu_regular_pro.otf'
+import './assets/fonts/apercu_regular_italic_pro.otf'
+import './assets/fonts/apercu_medium_pro.otf'
+import './assets/fonts/apercu_medium_italic_pro.otf'
+import './assets/fonts/apercu_bold_pro.otf'
+import './assets/fonts/apercu_bold_italic_pro.otf'
 import './index.scss'
 
 ReactDOM.render(

@@ -121,11 +121,13 @@ function GlobalProvider({ location, children }) {
   const saveLandingData = async (data) => {
     try {
       Object.keys(data).forEach(async (key) => {
+        let temp = { ...data[key] }
+        delete temp.selected
         await firebase
           .firestore()
           .collection(LANDING_COLLECTION)
           .doc(key)
-          .set(data[key])
+          .set(temp)
       })
     } catch (err) {
       console.log(err)

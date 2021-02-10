@@ -27,7 +27,7 @@
       path {
         stroke: #000;
         animation-name: homeAnimation;
-        animation-duration: 10s;
+        animation-duration: 7s;
         animation-timing-function: ease;
         animation-delay: 0;
         animation-iteration-count: infinite;
@@ -60,6 +60,16 @@
           }
         }
       }
+    }
+  }
+  .work-info-container {
+    > .row {
+      max-width: 70%;
+      margin-left: 15px;
+      margin-top: 40%;
+    }
+    .work-info-title {
+      text-transform: capitalize;
     }
   }
 }
