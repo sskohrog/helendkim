@@ -1,10 +1,41 @@
+@keyframes colorWheelAnimation {
+  0% {
+    fill: #f1ffd4;
+  }
+  25% {
+    fill: #fff7c9;
+  }
+  50% {
+    fill: #f9d9c1;
+  }
+  75% {
+    fill: #fed8ff;
+  }
+  100% {
+    fill: #d0e5fb;
+  }
+}
 .home-container {
-  .logo-svg {
+  svg.helen-logo-svg {
     position: absolute;
     z-index: 1;
     width: 250px;
     right: calc(50% - 125px);
     top: 50vh;
+    ellipse {
+      fill: #fff;
+    }
+    &:hover {
+      cursor: pointer;
+      ellipse {
+        animation-name: colorWheelAnimation;
+        animation-duration: 7s;
+        animation-timing-function: ease;
+        animation-delay: 0;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+    }
   }
   .proj-view-container {
     height: 100vh;

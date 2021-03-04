@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import _isEmpty from 'lodash/isEmpty'
-import { GlobalContext } from '../../services/GlobalContext'
-import LogoHover from './LogoHover'
-import './Home.scss'
 import { navigate } from '@reach/router'
+import _isEmpty from 'lodash/isEmpty'
+import { ReactComponent as HelenKim } from '../../assets/HelenKim_1.svg'
+import { GlobalContext } from '../../services/GlobalContext'
+import './Home.scss'
 
 function HomeContainer() {
   const { getLandingData, workItems } = useContext(GlobalContext)
@@ -21,7 +21,7 @@ function HomeContainer() {
 
   return (
     <div className='col-12 home-container'>
-      <LogoHover />
+      <HelenKim alt='Helen Kim' className='helen-logo-svg' />
       <div className='row'>
         {Object.keys(landingItems || {}).map((key) => (
           <div
