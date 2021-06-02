@@ -21,6 +21,34 @@ function About({ setIsOpen }) {
   }
   return (
     <>
+      <div className='row white-box'>
+        <div className='col-6 sm-title'>
+          <p className='sm-links'>
+            <a
+              // href={`mailto:${(socialContent || {}).email}`}
+              href={`mailto:helendaseul@gmail.com`}
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              <EmailSVG className='sm-svg' />
+              Email
+            </a>
+          </p>
+        </div>
+        <div className='col-6 sm-title'>
+          <p className='sm-links'>
+            <a
+              // href={(socialContent || {}).linkedin}
+              href='https://www.linkedin.com/in/helendkim/'
+              rel='noopener noreferrer'
+              target='_blank'
+            >
+              <LinkedinSVG className='sm-svg' />
+              LinkedIn
+            </a>
+          </p>
+        </div>
+      </div>
       <div className='row grey-box'>
         <div className='col-12'>
           <div className='row'>
@@ -55,38 +83,6 @@ function About({ setIsOpen }) {
                   </div>
                 )
             )}
-          </div>
-        </div>
-      </div>
-      <div className='row white-box'>
-        <div className='col-12 white-box-col'>
-          <div className='row'>
-            <div className='col-12 sm-title'>
-              <p className='sm-links'>
-                <a
-                  // href={`mailto:${(socialContent || {}).email}`}
-                  href={`mailto:helendaseul@gmail.com`}
-                  rel='noopener noreferrer'
-                  target='_blank'
-                >
-                  <EmailSVG className='sm-svg' />
-                  Email
-                </a>
-              </p>
-            </div>
-            <div className='col-12 sm-title'>
-              <p className='sm-links'>
-                <a
-                  // href={(socialContent || {}).linkedin}
-                  href='https://www.linkedin.com/in/helendkim/'
-                  rel='noopener noreferrer'
-                  target='_blank'
-                >
-                  <LinkedinSVG className='sm-svg' />
-                  LinkedIn
-                </a>
-              </p>
-            </div>
           </div>
         </div>
       </div>

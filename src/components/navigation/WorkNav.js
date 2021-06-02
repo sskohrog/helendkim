@@ -20,11 +20,11 @@ function WorkNav({ setIsOpen }) {
 
   return (
     <div className='row work-nav'>
-      <div className='col-12 nav-title mt-5'>Selected Work</div>
-      {Object.keys(landingItems || {}).map((key) => (
+      <div className='col-12 nav-title mt-5 mb-2'>Work</div>
+      {Object.keys(landingItems || {}).map((key, idx) => (
         <Link
           key={key}
-          className='col-12 nav-title btn-link'
+          className={`col-12 work-nav-title btn-link${idx === 0 ? ' first' : ''}`}
           to={`/work/${key}`}
           onClick={(e) => {
             e.stopPropagation()

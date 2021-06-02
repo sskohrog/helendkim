@@ -26,7 +26,7 @@ function HomeContainer() {
         {Object.keys(landingItems || {}).map((key) => (
           <div
             key={key}
-            className={`col-${
+            className={`col-12 col'lg-${
               landingItems[key].colsize || '12'
             } proj-view-container`}
             style={{

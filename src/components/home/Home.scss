@@ -20,8 +20,10 @@
     position: absolute;
     z-index: 1;
     width: 250px;
-    right: calc(50% - 125px);
-    top: 50vh;
+    top: calc(50vh - 65px);
+    left: 0;
+    right: 0;
+    margin: auto;
     ellipse {
       fill: #fff;
     }
@@ -43,6 +45,16 @@
     background-size: cover;
     .proj-view-title {
       cursor: pointer;
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .home-container {
+    svg.helen-logo-svg {
+      top: 0;
+      bottom: 0;
     }
   }
 }

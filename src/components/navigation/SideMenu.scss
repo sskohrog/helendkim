@@ -1,8 +1,25 @@
 @import '../../_variables.scss';
 
+@keyframes colorWheelAnimation {
+  0% {
+    fill: #f1ffd4;
+  }
+  25% {
+    fill: #fff7c9;
+  }
+  50% {
+    fill: #f9d9c1;
+  }
+  75% {
+    fill: #fed8ff;
+  }
+  100% {
+    fill: #d0e5fb;
+  }
+}
 .side-menu-button {
+  display: none;
   height: 100vh;
-  display: flex;
   align-items: center;
   justify-content: center;
   width: 62px;
@@ -17,10 +34,11 @@
 }
 
 .side-menu-container {
+  display: none;
   z-index: 99;
   position: fixed;
   top: 0;
-  background-color: $light-grey;
+  background-color: #fff;
   height: 100vh;
   width: 430px;
   transition: all 500ms ease-in-out;
@@ -30,7 +48,6 @@
     border-left: 1px solid #000;
     &.show {
       transform: translateX(0);
-      border: none;
     }
   }
   &.left {
@@ -39,14 +56,13 @@
     border-right: 1px solid #000;
     &.show {
       left: 0;
-      border: none;
     }
   }
   &.show {
     z-index: 102;
-    -webkit-box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
+    // -webkit-box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
+    // -moz-box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
+    // box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
     .side-menu-child {
       display: flex;
       height: 100vh;
@@ -65,25 +81,39 @@
   }
   .white-box {
     background-color: #fff;
-    height: 200px;
-    > .col-12.white-box-col {
+    font-size: 1rem;
+    margin: 0;
+    .col-6 {
       display: flex;
-      align-items: center;
-      > .row {
-        width: 100%;
+      justify-content: center;
+      &:first-child {
+        border-bottom: 1px solid #000;
+        border-right: 1px solid #000;
+      }
+      &:last-child {
+        border-bottom: 1px solid #000;
+      }
+      &:hover {
+        .sm-links {
+          font-weight: bold;
+        }
+        svg.sm-svg {
+          .st0,
+          .linkedin {
+            animation-name: colorWheelAnimation;
+            animation-duration: 7s;
+            animation-timing-function: ease;
+            animation-delay: 0;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+          }
+        }
       }
     }
     svg.sm-svg {
       width: 75px;
-      &:hover {
-        width: 76px;
-      }
     }
     .sm-title {
-      border-top: solid 1px #e5e4e6;
-      &:last-child {
-        border-bottom: solid 1px #e5e4e6;
-      }
       .sm-links {
         margin-bottom: 0;
         a {
@@ -93,9 +123,19 @@
       }
     }
   }
+  .work-nav {
+    a.btn-link {
+      border-bottom: 1px solid #000;
+      text-decoration: none;
+      color: #000;
+      line-height: 2.5;
+      &.first {
+        border-top: 1px solid #000;
+      }
+    }
+  }
   .work-nav,
-  .grey-box,
-  .white-box {
+  .grey-box {
     font-size: 1rem;
     margin: 0;
     > .col-12 {
@@ -128,3 +168,13 @@
     display: block;
   }
 }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+  .side-menu-button {
+    display: block;
+  }
+  .side-menu-container {
+    display: flex;
+  }
+ }
