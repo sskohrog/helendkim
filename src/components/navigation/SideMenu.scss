@@ -171,9 +171,7 @@
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) { 
-  .side-menu-button {
-    display: block;
-  }
+  .side-menu-button,
   .side-menu-container {
     display: flex;
   }
