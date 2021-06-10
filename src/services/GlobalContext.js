@@ -157,6 +157,7 @@ function GlobalProvider({ location, children }) {
         .collection(PROJECT_COLLECTION)
         .doc(docID)
         .set(clonedWork)
+      id !== 'new' && saveLandingData({ [docID]: clonedWork })
     } catch (err) {
       console.log(err)
     }

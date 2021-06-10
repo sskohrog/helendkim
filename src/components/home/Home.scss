@@ -30,17 +30,13 @@
     &:hover {
       cursor: pointer;
       ellipse {
-        animation-name: colorWheelAnimation;
-        animation-duration: 7s;
-        animation-timing-function: ease;
-        animation-delay: 0;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
+        animation: colorWheelAnimation 7s ease infinite alternate;
+        -webkit-animation: colorWheelAnimation 7s ease infinite alternate;
       }
     }
   }
   .proj-view-container {
-    height: 100vh;
+    height: 80vh;
     background-position: center;
     background-size: cover;
     .proj-view-title {
@@ -50,5 +46,10 @@
 }
 
 // Large devices (desktops, 992px and up)
-// @media (min-width: 992px) {
-// }
+@media (min-width: 992px) {
+  .home-container {
+    .proj-view-container {
+      height: 100vh;
+    }
+  }
+}

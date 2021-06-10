@@ -21,8 +21,22 @@ function WorkContainer({ id }) {
   return work ? (
     <div className='col-12 work-container'>
       <div className='row'>
-        <Home className='home-icon' onClick={() => navigate('/')} />
-        <div className='col-6 media-container'>
+        <Home
+          className='home-icon d-none d-md-block'
+          onClick={() => navigate('/')}
+        />
+        <div className='col-12 work-info-container'>
+          <div className='row'>
+            <div className='col-12 mt-1 work-info-title'>
+              {(work || {}).jobTitle}
+            </div>
+            <div className='col-12 work-info-name'><h3>{(work || {}).name}</h3></div>
+            <div className='col-12 mt-3 work-info-description'>
+              {(work || {}).description}
+            </div>
+          </div>
+        </div>
+        <div className='col-12 media-container'>
           <CarouselProvider
             infinite
             className='work-carousel'
@@ -47,17 +61,6 @@ function WorkContainer({ id }) {
               <DotGroup className='work-carousel-dots' />
             )}
           </CarouselProvider>
-        </div>
-        <div className='col-6 work-info-container'>
-          <div className='row'>
-            <div className='col-12 work-info-name'>{(work || {}).name}</div>
-            <div className='col-12 mt-1 work-info-title'>
-              <h3>{(work || {}).jobTitle}</h3>
-            </div>
-            <div className='col-12 mt-3 work-info-description'>
-              {(work || {}).description}
-            </div>
-          </div>
         </div>
       </div>
     </div>

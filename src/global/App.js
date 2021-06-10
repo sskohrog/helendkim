@@ -29,8 +29,41 @@ function App() {
                     >
                       <WorkNav setIsOpen={setIsOpenWork} />
                     </SideMenu>
+                    <div
+                      className={`col-12 mobile-menu d-lg-none${
+                        isOpenAbout || isOpenWork ? ' hide' : ''
+                      }`}
+                    >
+                      <div className='row'>
+                        <button
+                          className='col-6 btn btn-link'
+                          onClick={() => setIsOpenWork(true)}
+                        >
+                          Work
+                        </button>
+                        <button
+                          className='col-6 btn btn-link'
+                          onClick={() => setIsOpenAbout(true)}
+                        >
+                          About
+                        </button>
+                      </div>
+                    </div>
                     <div className='col main-content'>
                       <Routes />
+                    </div>
+                    <div className='col-12 mobile-home d-lg-none'>
+                      <div className='row'>
+                        <button
+                          className='col-12 btn btn-link'
+                          onClick={() => {
+                            setIsOpenAbout(false)
+                            setIsOpenWork(false)
+                          }}
+                        >
+                          Home
+                        </button>
+                      </div>
                     </div>
                     <SideMenu
                       menuText='About'

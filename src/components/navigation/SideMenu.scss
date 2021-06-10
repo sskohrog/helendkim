@@ -1,20 +1,20 @@
 @import '../../_variables.scss';
 
-@keyframes colorWheelAnimation {
+@keyframes bckgrndcolorWheelAnimationB {
   0% {
-    fill: #f1ffd4;
+    background-color: #f1ffd4;
   }
   25% {
-    fill: #fff7c9;
+    background-color: #fff7c9;
   }
   50% {
-    fill: #f9d9c1;
+    background-color: #f9d9c1;
   }
   75% {
-    fill: #fed8ff;
+    background-color: #fed8ff;
   }
   100% {
-    fill: #d0e5fb;
+    background-color: #d0e5fb;
   }
 }
 .side-menu-button {
@@ -34,13 +34,11 @@
 }
 
 .side-menu-container {
-  display: none;
   z-index: 99;
   position: fixed;
   top: 0;
   background-color: #fff;
   height: 100vh;
-  width: 430px;
   transition: all 500ms ease-in-out;
   &.right {
     right: 0;
@@ -59,14 +57,13 @@
     }
   }
   &.show {
+    width: 100%;
     z-index: 102;
-    // -webkit-box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
-    // -moz-box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
-    // box-shadow: 0px 0px 30px 10px rgba(0, 0, 0, 0.3);
     .side-menu-child {
       display: flex;
       height: 100vh;
       flex-flow: column;
+      width: 100%;
     }
   }
   .side-menu-child {
@@ -93,22 +90,6 @@
       &:last-child {
         border-bottom: 1px solid #000;
       }
-      &:hover {
-        .sm-links {
-          font-weight: bold;
-        }
-        svg.sm-svg {
-          .st0,
-          .linkedin {
-            animation-name: colorWheelAnimation;
-            animation-duration: 7s;
-            animation-timing-function: ease;
-            animation-delay: 0;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-          }
-        }
-      }
     }
     svg.sm-svg {
       width: 75px;
@@ -133,10 +114,17 @@
         border-top: 1px solid #000;
       }
     }
+    .work-nav-title.btn-link {
+      background-color: #fff;
+      &:hover {
+        animation: bckgrndcolorWheelAnimationB 7s ease infinite alternate;
+        -webkit-animation: bckgrndcolorWheelAnimationB 7s ease infinite alternate;
+      }
+    }
   }
   .work-nav,
   .grey-box {
-    font-size: 1rem;
+    font-size: 1.4rem;
     margin: 0;
     > .col-12 {
       padding-left: 10%;
@@ -159,20 +147,28 @@
     }
   }
 }
-
 .side-menu-backdrop.modal-backdrop {
-  z-index: 1;
   display: none;
-  background-color: transparent;
-  &.show {
-    display: block;
-  }
 }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
   .side-menu-button,
   .side-menu-container {
     display: flex;
   }
- }
+  .side-menu-container {
+    width: 430px !important;
+  }
+  .side-menu-backdrop.modal-backdrop {
+    z-index: 1;
+    display: none;
+    background-color: transparent;
+    &.show {
+      display: block;
+    }
+  }
+  .work-nav {
+    font-size: 1rem;
+  }
+}
