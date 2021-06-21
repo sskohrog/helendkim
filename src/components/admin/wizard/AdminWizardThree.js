@@ -23,6 +23,9 @@ function AdminWizardThree({
 
   return (
     <Form className='col-12 admin-wizard-3-container'>
+      <h5 className='row admin-title'>
+        <div className='col-12'>Select Media for Grid</div>
+      </h5>
       <div className='row'>
         <div className='col-12'>
           <ImageEditor media={media} setWorkItem={setWorkItem} />
@@ -32,7 +35,7 @@ function AdminWizardThree({
             <div className='col-6'>
               <Button
                 onClick={() =>
-                  setWizardProgress({ title: 'Step 1', progress: 50, step: 1 })
+                  setWizardProgress({ title: 'Step 2', progress: 55, step: 2 })
                 }
                 color='primary'
                 className='back-btn'

@@ -19,7 +19,7 @@ function AdminWizardOne({ workItem, setWorkItem, setWizardProgress }) {
 
   const nextButton = () => {
     setWorkItem(() => ({ ...inputData }))
-    setWizardProgress({ title: 'Step 2', progress: 100, step: 2 })
+    setWizardProgress({ title: 'Step 2', progress: 66, step: 2 })
   }
 
   return (
@@ -69,6 +69,23 @@ function AdminWizardOne({ workItem, setWorkItem, setWizardProgress }) {
                 setInputData((data) => ({
                   ...data,
                   description: e.target.value
+                }))
+              }
+            />
+          </FormGroup>
+        </div>
+        <div className='col-12'>
+          <FormGroup className='col-12-quote-textarea-container'>
+            <Label for='quote'>Large Quote</Label>
+            <Input
+              type='textarea'
+              id='quote'
+              className='wizard-textarea'
+              value={(inputData || {}).quote || ''}
+              onChange={(e) =>
+                setInputData((data) => ({
+                  ...data,
+                  quote: e.target.value
                 }))
               }
             />

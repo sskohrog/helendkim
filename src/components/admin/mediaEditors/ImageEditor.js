@@ -6,33 +6,45 @@ import Input from 'reactstrap/lib/Input'
 import Label from 'reactstrap/lib/Label'
 import '../Admin.scss'
 
-function ImageEditor({ media, setWorkItem }) {
+function ImageEditor({ grid, media = [], setWorkItem }) {
   const addNewMedia = () => {
     let cloneImgs = _cloneDeep(media)
+    let currMedia = grid ? 'grid' : 'media'
     cloneImgs.push({
       type: '',
       alt: '',
+      col: '',
       src: '',
       previewUrl: '',
       file: {}
     })
-    setWorkItem((work) => ({ ...work, media: cloneImgs }))
+    setWorkItem((work) => ({ ...work, [currMedia]: cloneImgs }))
   }
 
   const deleteMedia = (idx) => {
     let cloneImgs = _cloneDeep(media)
+    let currMedia = grid ? 'grid' : 'media'
     cloneImgs.splice(idx, 1)
-    setWorkItem((work) => ({ ...work, media: cloneImgs }))
+    setWorkItem((work) => ({ ...work, [currMedia]: cloneImgs }))
   }
 
   const updateAltText = (text, idx) => {
     let cloneImgs = _cloneDeep(media)
+    let currMedia = grid ? 'grid' : 'media'
     cloneImgs[idx].alt = text
-    setWorkItem((work) => ({ ...work, media: cloneImgs }))
+    setWorkItem((work) => ({ ...work, [currMedia]: cloneImgs }))
+  }
+
+  const updateColSize = (col, idx) => {
+    let cloneImgs = _cloneDeep(media)
+    let currMedia = grid ? 'grid' : 'media'
+    cloneImgs[idx].col = col
+    setWorkItem((work) => ({ ...work, [currMedia]: cloneImgs }))
   }
 
   const updateFile = (event, idx) => {
     let cloneImgs = _cloneDeep(media)
+    let currMedia = grid ? 'grid' : 'media'
     if (event.target.files.length === 0) {
       delete cloneImgs[idx].previewUrl
       delete cloneImgs[idx].file
@@ -45,7 +57,7 @@ function ImageEditor({ media, setWorkItem }) {
       ? (cloneImgs[idx].type = 'img')
       : (cloneImgs[idx].type = 'vid')
 
-    setWorkItem((work) => ({ ...work, media: cloneImgs }))
+    setWorkItem((work) => ({ ...work, [currMedia]: cloneImgs }))
   }
 
   return (
@@ -58,7 +70,7 @@ function ImageEditor({ media, setWorkItem }) {
         <div className='row'>
           {(media || []).map((img, idx) => {
             return (
-              <div key={idx} className='imgs-container col'>
+              <div key={idx} className='imgs-container col-6'>
                 <Button
                   type='button'
                   className='close'
@@ -67,37 +79,53 @@ function ImageEditor({ media, setWorkItem }) {
                 >
                   <span aria-hidden='true'>&times;</span>
                 </Button>
-                {img.type === 'img' ? (
-                  <img
-                    alt={img.alt}
-                    className='work-img'
-                    src={img.previewUrl || img.src}
-                  />
-                ) : (
-                  <video className='work-img'>
-                    <source
-                      src={img.previewUrl || img.src}
+                <p className='text-center'>
+                  {img.type === 'img' ? (
+                    <img
                       alt={img.alt}
-                      type='video/mp4'
+                      className='work-img'
+                      src={img.previewUrl || img.src}
                     />
-                  </video>
-                )}
+                  ) : (
+                    <video className='work-img'>
+                      <source
+                        src={img.previewUrl || img.src}
+                        alt={img.alt}
+                        type='video/mp4'
+                      />
+                    </video>
+                  )}
+                </p>
                 <FormGroup className='carousel-file-Input mt-2 mb-1'>
                   <Input
                     type='file'
                     onChange={(event) => updateFile(event, idx)}
                   />
                 </FormGroup>
-                <FormGroup className='carousel-alttxt-Input'>
+                <FormGroup className='carousel-alttxt-input'>
                   <Label for='altTextImage'>Alt Text:</Label>
                   <Input
-                    type='alt'
+                    type='text'
                     id='altTextImage'
                     placeholder='ALT TEXT FOR IMAGE'
                     value={img.alt}
                     onChange={(event) => updateAltText(event.target.value, idx)}
                   />
                 </FormGroup>
+                {grid && (
+                  <FormGroup className='carousel-col-size-input'>
+                    <Label for='colSize'>Column size:</Label>
+                    <Input
+                      type='text'
+                      id='colSize'
+                      placeholder='COLUMN SIZE FOR IMAGE'
+                      value={img.col}
+                      onChange={(event) =>
+                        updateColSize(event.target.value, idx)
+                      }
+                    />
+                  </FormGroup>
+                )}
               </div>
             )
           })}

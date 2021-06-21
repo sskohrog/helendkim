@@ -1,6 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { navigate } from '@reach/router'
-import { CarouselProvider, Slider, Slide, DotGroup } from 'pure-react-carousel'
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  DotGroup,
+  ButtonBack,
+  ButtonNext
+} from 'pure-react-carousel'
 import { ReactComponent as Home } from '../../assets/home.svg'
 import { GlobalContext } from '../../services/GlobalContext'
 import 'pure-react-carousel/dist/react-carousel.es.css'
@@ -21,44 +28,69 @@ function WorkContainer({ id }) {
   return work ? (
     <div className='col-12 work-container'>
       <div className='row'>
-        <Home
-          className='home-icon d-none d-md-block'
-          onClick={() => navigate('/')}
-        />
+        <div className='col-12 home-icon-container mt-4'>
+          <Home
+            className='home-icon d-none d-md-block'
+            onClick={() => navigate('/')}
+          />
+        </div>
         <div className='col-12 work-info-container'>
           <div className='row'>
             <div className='col-12 mt-1 work-info-title'>
               {(work || {}).jobTitle}
             </div>
-            <div className='col-12 work-info-name'><h3>{(work || {}).name}</h3></div>
+            <div className='col-12 work-info-name'>
+              <h3>{(work || {}).name}</h3>
+            </div>
             <div className='col-12 mt-3 work-info-description'>
               {(work || {}).description}
             </div>
           </div>
         </div>
+        <div className='col-12 grid-container'>
+          <div className='row'>
+            {((work || {}).grid || []).map((g, idx) => (
+              <div
+                key={idx}
+                className={`carousel-img col-12 col-lg-${g.col ? g.col : '12'}`}
+                style={{ backgroundImage: `url(${(g || {}).src || ''})` }}
+                alt={(g || {}).alt || ''}
+              />
+            ))}
+          </div>
+        </div>
+        {(work || {}).quote && (
+          <div className='col-12 quote-container'>
+            <h3 className='quote-title'>"{(work || {}).quote}"</h3>
+          </div>
+        )}
         <div className='col-12 media-container'>
           <CarouselProvider
             infinite
             className='work-carousel'
-            orientation='vertical'
+            orientation='horizontal'
             visibleSlides={1}
             naturalSlideWidth={(window.innerWidth - 124) / 2 || 400}
-            naturalSlideHeight={window.innerHeight || 400}
+            naturalSlideHeight={400}
             totalSlides={((work || {}).media || []).length || 0}
           >
             <Slider>
               {((work || {}).media || []).map((m, idx) => (
-                <Slide index={idx}>
-                  <img
+                <Slide index={idx} key={idx}>
+                  <div
                     className='carousel-img'
+                    style={{ backgroundImage: `url(${(m || {}).src || ''})` }}
                     alt={(m || {}).alt || ''}
-                    src={(m || {}).src || ''}
                   />
                 </Slide>
               ))}
             </Slider>
             {((work || {}).media || []).length > 1 && (
-              <DotGroup className='work-carousel-dots' />
+              <div className='dot-group-container'>
+                <ButtonBack>{'<'}</ButtonBack>
+                <DotGroup className='work-carousel-dots' />
+                <ButtonNext>{'>'}</ButtonNext>
+              </div>
             )}
           </CarouselProvider>
         </div>

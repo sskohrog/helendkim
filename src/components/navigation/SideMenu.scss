@@ -73,8 +73,10 @@
     transform: rotate(90deg);
     font-size: 1.6rem;
   }
-  .grey-box {
+  div.grey-box {
     flex: 1;
+    margin-bottom: 67px;
+    padding-bottom: 13px;
   }
   .white-box {
     background-color: #fff;
@@ -118,7 +120,8 @@
       background-color: #fff;
       &:hover {
         animation: bckgrndcolorWheelAnimationB 7s ease infinite alternate;
-        -webkit-animation: bckgrndcolorWheelAnimationB 7s ease infinite alternate;
+        -webkit-animation: bckgrndcolorWheelAnimationB 7s ease infinite
+          alternate;
       }
     }
   }
@@ -126,6 +129,7 @@
   .grey-box {
     font-size: 1.4rem;
     margin: 0;
+    overflow: auto;
     > .col-12 {
       padding-left: 10%;
       padding-top: 5px;
@@ -159,6 +163,9 @@
   }
   .side-menu-container {
     width: 430px !important;
+    div.grey-box {
+      margin-bottom: 0;
+    }
   }
   .side-menu-backdrop.modal-backdrop {
     z-index: 1;

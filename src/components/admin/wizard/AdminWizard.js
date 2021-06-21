@@ -1,17 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../../../services/GlobalContext'
 import AdminWizardOne from './AdminWizardOne'
-// import AdminWizardTwo from './AdminWizardTwo'
+import AdminWizardTwo from './AdminWizardTwo'
 import AdminWizardThree from './AdminWizardThree'
 import '../Admin.scss'
 
 function AdminWizard({ id }) {
-  const { getWorkItem, saveWorkItem, uploadImages, firebase } = useContext(
-    GlobalContext
-  )
+  const { getWorkItem, saveWorkItem, uploadImages, firebase } =
+    useContext(GlobalContext)
   const [workItem, setWorkItem] = useState({
     description: '',
     jobTitle: '',
+    quote: '',
+    grid: [],
     media: [],
     mediaType: '',
     name: '',
@@ -20,7 +21,7 @@ function AdminWizard({ id }) {
   })
   const [wizardProgress, setWizardProgress] = useState({
     title: 'Step 1',
-    progress: 50,
+    progress: 33,
     step: 1
   })
 
@@ -28,7 +29,7 @@ function AdminWizard({ id }) {
     ;(async () => {
       if (id !== 'new') {
         let work = await getWorkItem(id)
-        setWorkItem(work)
+        setWorkItem({ ...work })
       }
     })()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,22 +49,22 @@ function AdminWizard({ id }) {
             setWizardProgress={setWizardProgress}
           />
         )
-      // case 2:
-      //   return (
-      //     <AdminWizardTwo
-      //       type={workItem.mediaType}
-      //       setWorkItem={setWorkItem}
-      //       setWizardProgress={setWizardProgress}
-      //     />
-      //   )
       case 2:
+        return (
+          <AdminWizardTwo
+            grid={workItem.grid}
+            setWorkItem={setWorkItem}
+            uploadImages={uploadImages}
+            setWizardProgress={setWizardProgress}
+          />
+        )
+      case 3:
         return (
           <AdminWizardThree
             type={workItem.mediaType}
             media={workItem.media}
             saveWork={saveWork}
             setWorkItem={setWorkItem}
-            uploadImages={uploadImages}
             setWizardProgress={setWizardProgress}
           />
         )

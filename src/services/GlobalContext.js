@@ -151,6 +151,7 @@ function GlobalProvider({ location, children }) {
     let docID = id === 'new' ? uuid() : id
     // upload images to firebase
     clonedWork.media = await uploadImages(work.media)
+    clonedWork.grid = await uploadImages(work.grid)
     try {
       await firebase
         .firestore()

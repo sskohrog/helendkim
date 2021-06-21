@@ -26,11 +26,13 @@ function HomeContainer() {
         {Object.keys(landingItems || {}).map((key) => (
           <div
             key={key}
-            className={`col-12 col'lg-${
+            className={`col-12 col-lg-${
               landingItems[key].colsize || '12'
             } proj-view-container`}
             style={{
-              backgroundImage: `url("${landingItems[key].img}")`
+              backgroundImage: `url("${
+                (((landingItems[key] || {}).media || [])[0] || {}).src
+              }")`
             }}
           >
             <h5 className='proj-view-soon mt-4 mb-2 ml-4'>
