@@ -34,28 +34,23 @@
   }
   .grid-container {
     .carousel-img {
-      background-position: center;
-      background-size: contain;
-      &.col-12 {
-        height: 640px;
-      }
-      &.col-6 {
-        height: 440px;
-      }
+      padding: 0;
     }
   }
   .quote-container {
     > .quote-title {
-      padding: 2.2rem 1.7rem;
+      padding: 3rem 1rem;
     }
   }
   .media-container {
     order: 2;
     .carousel-img {
       width: 100%;
-      height: 100%;
-      background-position: center;
-      background-size: contain;
+      height: auto;
+      padding: 0;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
     }
     .work-carousel {
       margin-left: -15px;
@@ -98,7 +93,7 @@
   }
   .work-info-container {
     > .row {
-      margin: 0.7rem;
+      margin: 3rem 1rem;
     }
     .work-info-title {
       text-transform: capitalize;
@@ -108,16 +103,11 @@
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-.work-container {
-  .quote-container {
-    > .quote-title {
-      max-width: 50%;
+  .work-container {
+    .quote-container {
+      > .quote-title {
+        max-width: 50%;
+      }
     }
   }
-  .work-info-container {
-    > .row {
-      margin: 3rem 1rem 1rem 1rem;
-    }
-  }
-}
 }

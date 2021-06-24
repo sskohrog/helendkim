@@ -28,7 +28,7 @@ function WorkContainer({ id }) {
   return work ? (
     <div className='col-12 work-container'>
       <div className='row'>
-        <div className='col-12 home-icon-container mt-4'>
+        <div className='col-12 home-icon-container mt-4 d-lg-flex d-none'>
           <Home
             className='home-icon d-none d-md-block'
             onClick={() => navigate('/')}
@@ -50,11 +50,10 @@ function WorkContainer({ id }) {
         <div className='col-12 grid-container'>
           <div className='row'>
             {((work || {}).grid || []).map((g, idx) => (
-              <div
-                key={idx}
-                className={`carousel-img col-12 col-lg-${g.col ? g.col : '12'}`}
-                style={{ backgroundImage: `url(${(g || {}).src || ''})` }}
+              <img
                 alt={(g || {}).alt || ''}
+                src={g.src}
+                className={`carousel-img col-12 col-lg-${g.col ? g.col : '12'}`}
               />
             ))}
           </div>
@@ -71,15 +70,15 @@ function WorkContainer({ id }) {
             orientation='horizontal'
             visibleSlides={1}
             naturalSlideWidth={(window.innerWidth - 124) / 2 || 400}
-            naturalSlideHeight={400}
+            naturalSlideHeight={window.innerWidth > 991 ? 450 : 180}
             totalSlides={((work || {}).media || []).length || 0}
           >
             <Slider>
               {((work || {}).media || []).map((m, idx) => (
                 <Slide index={idx} key={idx}>
-                  <div
+                  <img
                     className='carousel-img'
-                    style={{ backgroundImage: `url(${(m || {}).src || ''})` }}
+                    src={(m || {}).src}
                     alt={(m || {}).alt || ''}
                   />
                 </Slide>

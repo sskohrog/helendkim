@@ -77,6 +77,13 @@
     flex: 1;
     margin-bottom: 67px;
     padding-bottom: 13px;
+    .divider {
+      border-bottom: 1px solid #000;
+      padding: 0;
+      width: 444px;
+      margin-left: -15px;
+      margin-right: -15px;
+    }
   }
   .white-box {
     background-color: #fff;
@@ -131,12 +138,11 @@
     margin: 0;
     overflow: auto;
     > .col-12 {
-      padding-left: 10%;
-      padding-top: 5px;
-      padding-bottom: 5px;
+      padding: 5% 7%;
     }
     .nav-title {
       color: #7f7f7f;
+      margin-top: 1.5rem;
     }
     .about-title {
       margin-top: 0.2rem;
@@ -177,5 +183,16 @@
   }
   .work-nav {
     font-size: 1rem;
+  }
+  .work-nav,
+  .grey-box {
+    > .col-12 {
+      padding-left: 10%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    .nav-title {
+      margin-top: 3rem;
+    }
   }
 }

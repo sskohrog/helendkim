@@ -52,7 +52,7 @@ function About({ setIsOpen }) {
       <div className='row grey-box'>
         <div className='col-12'>
           <div className='row'>
-            <div className='col-12 nav-title mt-5  mb-2'>About</div>
+            <div className='col-12 nav-title mb-2'>About</div>
             <div className='col-12 about-title'>
               {(aboutData || {}).description}
             </div>
@@ -61,6 +61,7 @@ function About({ setIsOpen }) {
               <br />
               {(aboutData || {}).school}
             </div>
+            <div className="divider mt-5 d-none d-lg-flex" />
             <div
               className='col-12 nav-title mt-5  mb-2'
               onClick={(e) => updateCount(e)}
