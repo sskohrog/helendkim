@@ -35,7 +35,7 @@
   .grid-container {
     .carousel-img {
       background-position: center;
-      background-size: cover;
+      background-size: contain;
       &.col-12 {
         height: 640px;
       }
@@ -55,7 +55,7 @@
       width: 100%;
       height: 100%;
       background-position: center;
-      background-size: cover;
+      background-size: contain;
     }
     .work-carousel {
       margin-left: -15px;
